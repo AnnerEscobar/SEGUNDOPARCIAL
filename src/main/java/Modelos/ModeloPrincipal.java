@@ -10,18 +10,18 @@ package Modelos;
  * @author anner
  */
 public class ModeloPrincipal {
-     
+
      private int Codigo;
      private String nombre;
      private int enero = 0;
      private int febrero = 0;
      private int marzo = 0;
-     private int promedio =0;
-     private int total =0;
+     private double promedio = 0.0;
+     private int total = 0;
 
      @Override
      public String toString() {
-          return "ModeloPrincipal{" + "Codigo=" + Codigo + ", nombre=" + nombre + ", enero=" + enero + ", febrero=" + febrero + ", marzo=" + marzo + ", promedio=" + promedio + ", total=" + total + '}';
+          return "ModeloPrincipal{" + "Codigo=" + Codigo + ", nombre=" + nombre + ", enero=" + enero + ", febrero=" + febrero + ",               marzo=" + marzo + ", promedio=" + promedio + ", total=" + total + '}';
      }
 
      public int getCodigo() {
@@ -64,14 +64,14 @@ public class ModeloPrincipal {
           this.marzo = marzo;
      }
 
-     public int getPromedio() {
+     public double getPromedio() {
           return promedio;
      }
 
-     public void setPromedio(int promedio) {
-          
-          promedio = (this.enero + this.febrero + this.marzo) /3; 
-          
+     public void setPromedio(double promedio) {
+
+          promedio = (this.enero + this.febrero + this.marzo) / 3;
+
           this.promedio = promedio;
      }
 
@@ -80,11 +80,10 @@ public class ModeloPrincipal {
      }
 
      public void setTotal(int total) {
-          
-          total = this.enero+this.febrero+this.marzo;
-          
+
+          total = this.enero + this.febrero + this.marzo;
+
           this.total = total;
      }
-    
-     
+
 }

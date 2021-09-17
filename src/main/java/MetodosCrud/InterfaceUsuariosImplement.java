@@ -17,42 +17,57 @@ import javax.swing.JOptionPane;
  *
  * @author anner
  */
-public class InterfaceUsuariosImplement implements InterfaceUsuarios{
+public class InterfaceUsuariosImplement implements InterfaceUsuarios {
+
+     public String Encriptador(String palabra, int Llave) {
+
+          String Ascci = "";
+          int codificador = 0;
+
+          for (int x = 0; x < palabra.length(); x++) {
+
+               codificador = (int) palabra.charAt(x);
+               codificador = codificador + Llave;
+
+               char caracter = (char) codificador;
+               Ascci = Ascci + caracter;
+          }
+          return Ascci;
+     }
 
      @Override
      public boolean Verificar(String usuario, String pass) {
           Connection conn = null;
-          PreparedStatement stmt= null;
+          PreparedStatement stmt = null;
           ResultSet rs = null;
           boolean correcto = false;
-          String sql = "select *from tb_usuarios where username = '"+usuario+"'and password = '"+pass+"' ";
-          
-           try {
+          String sql = "select *from tb_usuarios where username = '" + usuario + "'and password = '" + pass + "' ";
+
+          try {
                conn = ClsConexion.OpenConection();
                stmt = conn.prepareStatement(sql);
                rs = stmt.executeQuery();
-               
-               if(rs.next()){
+
+               if (rs.next()) {
                     correcto = true;
-                   if(correcto = true){
-                        PantallaPrincipal form = new PantallaPrincipal();
-                        form.setVisible(true);
-                   }
-               }else{
-                        JOptionPane.showMessageDialog(null,"Error, el usuario no existe o escribiste mal");
-                      
-                   }
-               
+                    if (correcto = true) {
+                         PantallaPrincipal form = new PantallaPrincipal();
+                         form.setVisible(true);
+                    }
+               } else {
+                    JOptionPane.showMessageDialog(null, "Error, el usuario no existe o escribiste mal");
+
+               }
+
           } catch (SQLException ex) {
                ex.printStackTrace(System.out);
-          }finally{
+          } finally {
                ClsConexion.CloseConection(stmt);
                ClsConexion.CloseConection(rs);
                ClsConexion.CloseConection(conn);
           }
           return correcto;
-          
-          
+
      }
-     
+
 }

@@ -6,9 +6,7 @@
 package MetodosCrud;
 
 import Modelos.ModeloPrincipal;
-import java.util.*;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

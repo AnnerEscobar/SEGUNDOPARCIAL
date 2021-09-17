@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -43,8 +42,8 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
                stmt.setInt(2, modelo.getEnero());
                stmt.setInt(3, modelo.getFebrero());
                stmt.setInt(4, modelo.getMarzo());
-               stmt.setInt(5, modelo.getTotal());
-               stmt.setInt(6, modelo.getPromedio());
+               stmt.setInt(5, modelo.getEnero()+ modelo.getFebrero()+modelo.getMarzo());
+               stmt.setInt(6, (modelo.getEnero()+modelo.getFebrero()+modelo.getMarzo()/3));
                stmt.execute();
 
                correcto = true;
@@ -90,7 +89,7 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
                     ag.setFebrero(rs.getInt(4));
                     ag.setMarzo(rs.getInt(5));
                     ag.setTotal(rs.getInt(6));
-                    ag.setPromedio(rs.getInt(7));
+                    ag.setPromedio(rs.getDouble(7));
                     milista.add(ag);
 
                
@@ -133,7 +132,7 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
                stmt.setInt(3, modelo.getFebrero());
                stmt.setInt(4, modelo.getMarzo());
                stmt.setInt(5, modelo.getTotal());
-               stmt.setInt(6, modelo.getPromedio());
+               stmt.setDouble(6, modelo.getPromedio());
                stmt.setInt(7, modelo.getCodigo());
                stmt.execute();
                actualizar = true;
