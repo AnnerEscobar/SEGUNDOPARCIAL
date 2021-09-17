@@ -40,9 +40,9 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
                stmt = conn.prepareStatement(Insert);
 
                stmt.setString(1, modelo.getNombre());
-               stmt.setString(2, modelo.getEnero());
-               stmt.setString(3, modelo.getFebrero());
-               stmt.setString(4, modelo.getMarzo());
+               stmt.setInt(2, modelo.getEnero());
+               stmt.setInt(3, modelo.getFebrero());
+               stmt.setInt(4, modelo.getMarzo());
                stmt.setInt(5, modelo.getTotal());
                stmt.setInt(6, modelo.getPromedio());
                stmt.execute();
@@ -86,9 +86,9 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
                while (rs.next()) {
                     ag.setCodigo(rs.getInt(1));
                     ag.setNombre(rs.getString(2));
-                    ag.setEnero(rs.getString(3));
-                    ag.setFebrero(rs.getString(4));
-                    ag.setMarzo(rs.getString(5));
+                    ag.setEnero(rs.getInt(3));
+                    ag.setFebrero(rs.getInt(4));
+                    ag.setMarzo(rs.getInt(5));
                     ag.setTotal(rs.getInt(6));
                     ag.setPromedio(rs.getInt(7));
                     milista.add(ag);
@@ -98,9 +98,9 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
                     for (int i = 0; i < milista.size(); i++) {
                     v[0] = String.valueOf(ag.getCodigo());
                     v[1] = ag.getNombre();
-                    v[2] = ag.getEnero();
-                    v[3] = ag.getFebrero();
-                    v[4] = ag.getMarzo();
+                    v[2] = String.valueOf(ag.getEnero());
+                    v[3] = String.valueOf(ag.getFebrero());
+                    v[4] = String.valueOf(ag.getMarzo());
                     v[5] = String.valueOf(ag.getTotal());
                     v[6] = String.valueOf(ag.getPromedio());
                     
@@ -129,9 +129,9 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
                conn = ClsConexion.OpenConection();
                stmt = conn.prepareStatement(sql);
                stmt.setString(1, modelo.getNombre());
-               stmt.setString(2, modelo.getEnero());
-               stmt.setString(3, modelo.getFebrero());
-               stmt.setString(4, modelo.getMarzo());
+               stmt.setInt(2, modelo.getEnero());
+               stmt.setInt(3, modelo.getFebrero());
+               stmt.setInt(4, modelo.getMarzo());
                stmt.setInt(5, modelo.getTotal());
                stmt.setInt(6, modelo.getPromedio());
                stmt.setInt(7, modelo.getCodigo());
