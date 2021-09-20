@@ -5,6 +5,7 @@
  */
 package PantallasGraficas;
 
+import Conexion.ClsConexion;
 import MetodosCrud.InterfacePrincipalImplement;
 import Modelos.ModeloPrincipal;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 public class PantallaPrincipal extends javax.swing.JFrame {
 
      ModeloPrincipal ag = new ModeloPrincipal();
+     InterfacePrincipalImplement metodos = new InterfacePrincipalImplement();
 
      public PantallaPrincipal() {
           initComponents();
@@ -46,6 +48,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           jLabel5 = new javax.swing.JLabel();
           jLabel6 = new javax.swing.JLabel();
           jLabel8 = new javax.swing.JLabel();
+          btnPdf = new javax.swing.JButton();
 
           jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
           jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -55,6 +58,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           setSize(new java.awt.Dimension(0, 0));
 
           jPanel1.setBackground(new java.awt.Color(51, 204, 255));
+          jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+          jPanel1.setDoubleBuffered(false);
+          jPanel1.setFocusable(false);
 
           jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
           jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,48 +120,56 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                contenedor.getColumnModel().getColumn(6).setResizable(false);
           }
 
-          btnRegistrar.setBackground(new java.awt.Color(0, 0, 0));
+          btnRegistrar.setBackground(new java.awt.Color(0, 51, 51));
           btnRegistrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
           btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
           btnRegistrar.setText("REGISTRAR");
+          btnRegistrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
           btnRegistrar.setBorderPainted(false);
           btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+          btnRegistrar.setFocusable(false);
           btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
                public void actionPerformed(java.awt.event.ActionEvent evt) {
                     btnRegistrarActionPerformed(evt);
                }
           });
 
-          btnConsultar.setBackground(new java.awt.Color(0, 0, 0));
+          btnConsultar.setBackground(new java.awt.Color(0, 51, 51));
           btnConsultar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
           btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
           btnConsultar.setText("CONSULTAR");
+          btnConsultar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
           btnConsultar.setBorderPainted(false);
           btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+          btnConsultar.setFocusable(false);
           btnConsultar.addActionListener(new java.awt.event.ActionListener() {
                public void actionPerformed(java.awt.event.ActionEvent evt) {
                     btnConsultarActionPerformed(evt);
                }
           });
 
-          btnEditar.setBackground(new java.awt.Color(0, 0, 0));
+          btnEditar.setBackground(new java.awt.Color(0, 51, 51));
           btnEditar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
           btnEditar.setForeground(new java.awt.Color(255, 255, 255));
           btnEditar.setText("EDITAR");
+          btnEditar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
           btnEditar.setBorderPainted(false);
           btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+          btnEditar.setFocusable(false);
           btnEditar.addActionListener(new java.awt.event.ActionListener() {
                public void actionPerformed(java.awt.event.ActionEvent evt) {
                     btnEditarActionPerformed(evt);
                }
           });
 
-          btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
+          btnEliminar.setBackground(new java.awt.Color(0, 51, 51));
           btnEliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
           btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
           btnEliminar.setText("ELIMINAR");
+          btnEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
           btnEliminar.setBorderPainted(false);
           btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+          btnEliminar.setFocusable(false);
           btnEliminar.addActionListener(new java.awt.event.ActionListener() {
                public void actionPerformed(java.awt.event.ActionEvent evt) {
                     btnEliminarActionPerformed(evt);
@@ -174,6 +188,20 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           jLabel8.setForeground(new java.awt.Color(255, 255, 255));
           jLabel8.setText("Registro de Empleados y Ventas");
 
+          btnPdf.setBackground(new java.awt.Color(0, 51, 51));
+          btnPdf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+          btnPdf.setForeground(new java.awt.Color(255, 255, 255));
+          btnPdf.setText("GENERAR PDF");
+          btnPdf.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+          btnPdf.setBorderPainted(false);
+          btnPdf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+          btnPdf.setFocusable(false);
+          btnPdf.addActionListener(new java.awt.event.ActionListener() {
+               public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnPdfActionPerformed(evt);
+               }
+          });
+
           javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
           jPanel1.setLayout(jPanel1Layout);
           jPanel1Layout.setHorizontalGroup(
@@ -182,43 +210,45 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                          .addGroup(jPanel1Layout.createSequentialGroup()
                               .addGap(35, 35, 35)
-                              .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE))
-                         .addGroup(jPanel1Layout.createSequentialGroup()
-                              .addGap(91, 91, 91)
                               .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                   .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(jLabel3)
-                                                  .addComponent(jLabel4)
-                                                  .addComponent(jLabel2))
-                                             .addGap(15, 15, 15)
-                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                  .addGroup(jPanel1Layout.createSequentialGroup()
-                                                       .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                            .addComponent(txtFebrero, javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(txtEnero, javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(txtMarzo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                       .addGap(57, 57, 57)
-                                                       .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel6)
-                                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                 .addComponent(btnEditar)
+                                   .addComponent(jLabel1)
+                                   .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                             .addComponent(jLabel3)
+                                             .addComponent(jLabel4)
+                                             .addComponent(jLabel2))
+                                        .addGap(15, 15, 15)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                       .addGroup(jPanel1Layout.createSequentialGroup()
+                                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                 .addComponent(txtFebrero, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                 .addComponent(txtEnero, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                 .addComponent(txtMarzo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addGap(75, 75, 75)
+                                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                 .addComponent(jLabel6)
                                                                  .addGroup(jPanel1Layout.createSequentialGroup()
                                                                       .addComponent(jLabel5)
                                                                       .addGap(18, 18, 18)
-                                                                      .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                             .addGap(18, 18, 18)
-                                             .addComponent(btnRegistrar)
-                                             .addGap(31, 31, 31)
-                                             .addComponent(btnConsultar)
-                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                             .addComponent(btnEliminar)))
-                                   .addComponent(jLabel8))))
-                    .addContainerGap(48, Short.MAX_VALUE))
+                                                                      .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                            .addGap(37, 37, 37))
+                                                       .addGroup(jPanel1Layout.createSequentialGroup()
+                                                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(26, 26, 26)
+                                                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(38, 38, 38)
+                                                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(28, 28, 28)))
+                                                  .addComponent(btnPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                   .addComponent(btnRegistrar)
+                                   .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                         .addGroup(jPanel1Layout.createSequentialGroup()
+                              .addGap(91, 91, 91)
+                              .addComponent(jLabel8)))
+                    .addContainerGap(98, Short.MAX_VALUE))
           );
           jPanel1Layout.setVerticalGroup(
                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +279,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                          .addComponent(btnRegistrar)
                          .addComponent(btnConsultar)
                          .addComponent(btnEditar)
-                         .addComponent(btnEliminar))
+                         .addComponent(btnEliminar)
+                         .addComponent(btnPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(44, 44, 44)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(130, 130, 130))
@@ -271,11 +302,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           pack();
      }// </editor-fold>//GEN-END:initComponents
 
-     
      ///Codigo creado por mi
-     
+
      private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-          InterfacePrincipalImplement metodos = new InterfacePrincipalImplement();
           ModeloPrincipal modelo = new ModeloPrincipal();
 
           modelo.setNombre(txtNombre.getText());
@@ -293,7 +322,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      }//GEN-LAST:event_btnRegistrarActionPerformed
 
      private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-          InterfacePrincipalImplement metodos = new InterfacePrincipalImplement();
           ModeloPrincipal modelo = new ModeloPrincipal();
 
           modelo.setCodigo(Integer.valueOf(txtCodigo.getText()));
@@ -305,9 +333,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
           BorrarCampos();
      }//GEN-LAST:event_btnEliminarActionPerformed
 
-     
+
      private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-          InterfacePrincipalImplement metodos = new InterfacePrincipalImplement();
+
           ModeloPrincipal modelo = new ModeloPrincipal();
 
           modelo.setNombre(txtNombre.getText());
@@ -324,10 +352,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      }//GEN-LAST:event_btnEditarActionPerformed
 
      private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-          InterfacePrincipalImplement metodos = new InterfacePrincipalImplement();
           metodos.obtener(contenedor);
 
      }//GEN-LAST:event_btnConsultarActionPerformed
+
+     private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
+
+          if(metodos.GenerarPdf()){
+               JOptionPane.showMessageDialog(null, "Archivo Descargado Correctamente");
+          }else{
+               JOptionPane.showMessageDialog(null, "Se dieron errores en la descarga");
+          }
+     }//GEN-LAST:event_btnPdfActionPerformed
 
      public void BorrarCampos() {
           txtNombre.setText(null);
@@ -338,7 +374,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      }
 
      //final codigo creado por mi
-     
      /**
       * @param args the command line arguments
       */
@@ -378,6 +413,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      private javax.swing.JButton btnConsultar;
      private javax.swing.JButton btnEditar;
      private javax.swing.JButton btnEliminar;
+     private javax.swing.JButton btnPdf;
      private javax.swing.JButton btnRegistrar;
      private javax.swing.JTable contenedor;
      private javax.swing.JLabel jLabel1;

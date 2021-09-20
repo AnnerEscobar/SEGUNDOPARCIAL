@@ -7,6 +7,7 @@ package MetodosCrud;
 
 import Modelos.ModeloPrincipal;
 import javax.swing.JTable;
+import com.itextpdf.text.Document;
 
 /**
  *
@@ -18,4 +19,5 @@ public interface InterfacePrincipal {
      public void obtener(JTable contenedor);
      public boolean actualizar(ModeloPrincipal modelo);
      public boolean eliminar(ModeloPrincipal modelo);
+     public boolean GenerarPdf();
 }

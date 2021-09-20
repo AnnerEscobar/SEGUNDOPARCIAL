@@ -7,6 +7,10 @@ package MetodosCrud;
 
 import Conexion.ClsConexion;
 import Modelos.ModeloPrincipal;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +36,7 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
           PreparedStatement stmt = null;
           boolean correcto = false;
 
-          String Insert = "Insert into empleados (nombre, enero, febrero, marzo, total, promedio) values                         (?,?,?,?,?,?)";
+          String Insert = "Insert into empleados (nombre, enero, febrero, marzo, promedio, total) values                         (?,?,?,?,?,?)";
 
           try {
                conn = ClsConexion.OpenConection();
@@ -170,4 +174,58 @@ public class InterfacePrincipalImplement implements InterfacePrincipal {
           return eliminar;
      }
      
+     public boolean GenerarPdf(){
+          boolean correcto = true;
+          
+           Document doc = new Document();
+          Connection conn = null;
+          PreparedStatement stmt = null;
+          ResultSet rs = null;
+
+          try {
+               String rutaArchivo = System.getProperty("user.home");
+               PdfWriter.getInstance(doc, new FileOutputStream(rutaArchivo + "/Desktop/Nomina_Empleados.pdf"));
+               doc.open();
+
+               PdfPTable tabla = new PdfPTable(7);
+               tabla.addCell("Codigo");
+               tabla.addCell("Nombre");
+               tabla.addCell("Enero");
+               tabla.addCell("Febrero");
+               tabla.addCell("Marzo");
+               tabla.addCell("Total");
+               tabla.addCell("Promedio");
+
+               try {
+                    conn = ClsConexion.OpenConection();
+                    stmt = conn.prepareStatement("Select *from empleados");
+                    rs = stmt.executeQuery();
+
+                    while (rs.next()) {
+
+                         tabla.addCell(rs.getString(1));
+                         tabla.addCell(rs.getString(2));
+                         tabla.addCell(rs.getString(3));
+                         tabla.addCell(rs.getString(4));
+                         tabla.addCell(rs.getString(5));
+                         tabla.addCell(rs.getString(6));
+                         tabla.addCell(rs.getString(7));
+
+                    }
+                    doc.add(tabla);
+                    doc.close();
+               } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Conexion Fallida " + e);
+               } finally {
+                    ClsConexion.CloseConection(stmt);
+                    ClsConexion.CloseConection(conn);
+                    ClsConexion.CloseConection(rs);
+               }
+
+          } catch (Exception e) {
+               JOptionPane.showMessageDialog(null, "Tu reporte no fue generado " + e);
+          }
+          return correcto;
+     }
+    
 }
